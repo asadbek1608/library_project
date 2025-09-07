@@ -1,4 +1,4 @@
-const AuthorSchema = require("../schema/auth.schema");
+const AuthorSchema = require("../schema/author.schema");
 
 const searchAuthors = async (req, res) => {
     try{
@@ -13,7 +13,7 @@ const searchAuthors = async (req, res) => {
     }
 }
 
-const getAllAuthors = async (req, res) => {
+const getAllAuthors = async (req, res, next) => {
     try{
         const authors = await AuthorSchema.find()
 
@@ -89,7 +89,7 @@ const deleteAuthor = async (req, res) => {
 
         res.status(201).json({message: "Author deleted"})
     }catch(error){
-        console.log(error.message);
+        next(error)
     }
 }
 
