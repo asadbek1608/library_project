@@ -1,8 +1,8 @@
 const express = require("express")
 const cors = require("cors")
 require("dotenv").config()
-const authorRouter = require("./router/author.routes")
 const connectDB = require("./config/db.config")
+const authorRouter = require("./router/author.routes")
 const bookRouter = require("./router/book.routes")
 
 const app = express()
