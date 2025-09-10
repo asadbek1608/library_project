@@ -1,13 +1,15 @@
 const customValidatorBook = require("../validator/book.validate")
 
-module.exports = function(err, req, res, next) {
+module.exports = function customValidatorMiddleware(req, res, next) {
     try{
         const {error} = customValidatorBook(req.body)
 
         if (error) {
-            console.log("our error is " + error);
+            return res.status(400).json(error)
         }
+        
+        next()
     }catch(error){
-        throw
+        throw new Error(error)
     }
 }

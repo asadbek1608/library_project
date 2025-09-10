@@ -1,8 +1,8 @@
 const BaseError = require("../error/baseError");
 const AuthSchema = require("../schema/auth.schema");
 const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
 const sendEmail = require("../utils/email-service")
+const {accessToken, refreshToken} = require("../utils/generate-token")
 
 const register = async (req, res, next) => {
     try{
@@ -75,9 +75,16 @@ const login = async (req, res, next) => {
         if (decode && foundedUser.isVerified) {
             const payload = {id: foundedUser._id, email: foundedUser.email, role: foundedUser.role}
 
-            const token = jwt.sign(payload, process.env.SEKRET.WORD, {expiresIn: "1h"})
+            const access = accessToken(payload)
+            const refresh = refreshToken(payload)
 
-            res.status(200).json({message: "success", token})
+            res.cookie("accessToken", access, {httpOnly: true, maxAge: 15000})
+            res.cookie("refreshToken", refresh, {httpOnly: true, maxAge: 1000 * 3600 * 24 * 15})
+
+            res.status(200).json({
+                access,
+                message: "success"
+            })
         }else{
           throw BaseError.UnAuthorized("wrong password")  
         }
