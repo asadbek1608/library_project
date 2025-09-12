@@ -1,0 +1,90 @@
+{"level":"error","message":"Error logger"}
+{"level":"warn","message":"Warning logger"}
+{"level":"info","message":"Info logger"}
+undefined [undefined] error: Error logger
+undefined [undefined] warn: Warning logger
+undefined [undefined] info: Info logger
+undefined [function createFormatWrap(opts) {
+    return new Format(opts);
+  }] error: Error logger
+undefined [function createFormatWrap(opts) {
+    return new Format(opts);
+  }] warn: Warning logger
+undefined [function createFormatWrap(opts) {
+    return new Format(opts);
+  }] info: Info logger
+undefined error: Error logger
+undefined warn: Warning logger
+undefined info: Info logger
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } error: Error logger
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } warn: Warning logger
+function createFormatWrap(opts) {
+    return new Format(opts);
+  } info: Info logger
+error: Error logger
+warn: Warning logger
+info: Info logger
+undefined
+undefined
+undefined
+{
+  message: 'Error logger',
+  level: 'error',
+  timestamp: '2025-09-12T07:46:52.172Z'
+}
+{
+  message: 'Warning logger',
+  level: 'warn',
+  timestamp: '2025-09-12T07:46:52.175Z'
+}
+{
+  message: 'Info logger',
+  level: 'info',
+  timestamp: '2025-09-12T07:46:52.176Z'
+}
+{
+  message: 'Error logger',
+  level: 'error',
+  timestamp: '2025-09-12T07:51:22.158Z'
+}
+{
+  message: 'Warning logger',
+  level: 'warn',
+  timestamp: '2025-09-12T07:51:22.161Z'
+}
+{
+  message: 'Info logger',
+  level: 'info',
+  timestamp: '2025-09-12T07:51:22.161Z'
+}
+{
+  message: 'Error logger',
+  level: 'error',
+  timestamp: '2025-09-12T07:51:27.237Z'
+}
+{
+  message: 'Warning logger',
+  level: 'warn',
+  timestamp: '2025-09-12T07:51:27.239Z'
+}
+{
+  message: 'Info logger',
+  level: 'info',
+  timestamp: '2025-09-12T07:51:27.240Z'
+}
+[2025-09-12T10:37:18.501Z] ([31merror[39m): Error logger
+[2025-09-12T10:37:18.503Z] ([33mwarn[39m): Warning logger
+[2025-09-12T10:37:18.504Z] ([32minfo[39m): Info logger
+[2025-09-12T10:37:18.504Z] ([34mdebug[39m): Debug logger
+[2025-09-12T10:53:01.236Z] ([31merror[39m): Error logger
+[2025-09-12T10:53:01.248Z] ([33mwarn[39m): Warning logger
+[2025-09-12T10:53:01.248Z] ([32minfo[39m): Info logger
+[2025-09-12T10:53:01.249Z] ([34mdebug[39m): Debug logger
+[2025-09-12T11:00:34.286Z] ([31merror[39m): Error logger
+[2025-09-12T11:00:34.289Z] ([33mwarn[39m): Warning logger
+[2025-09-12T11:00:34.290Z] ([32minfo[39m): Info logger
+[2025-09-12T11:00:34.290Z] ([34mdebug[39m): Debug logger

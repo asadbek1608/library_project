@@ -1,6 +1,7 @@
+const BaseError = require("../error/baseError");
 const AuthorSchema = require("../schema/author.schema");
 
-const searchAuthors = async (req, res) => {
+const searchAuthors = async (req, res, next) => {
     try{
         const serach = req.query.name
         const searchingResult = await AuthorSchema.find({
@@ -9,7 +10,7 @@ const searchAuthors = async (req, res) => {
 
         res.status(200).json(searchingResult)
     }catch(error){
-        console.log(error.message);
+        next(error)
     }
 }
 
@@ -19,11 +20,11 @@ const getAllAuthors = async (req, res, next) => {
 
         res.status(200).json(authors)
     }catch(error){
-        console.log(error.message);
+        next(error)
     }
 }
 
-const addAuthor = async (req, res) => {
+const addAuthor = async (req, res, next) => {
     try{
         const {
             full_name, date_of_birth, date_of_death, period, creativity, bio, photo
@@ -33,27 +34,27 @@ const addAuthor = async (req, res) => {
 
         res.status(201).json({message: "Addednew author"})
     }catch(error){
-        console.log(error.message);
+        next(error)
     }
 }
 
-const getOneAuthor = async (req, res) => {
+const getOneAuthor = async (req, res, next) => {
     try{
-        const {full_name} = req.params
+        const {id} = req.params
 
-        const foundedAuthor = await AuthorSchema.findByFullName(full_name)
+        const foundedAuthor = await AuthorSchema.findById(id)
 
         if (!foundedAuthor) {
-            res.status(404).json({message: "Author not found"})
+            throw BaseError.UnAuthorized("Author not found")
         }
 
         res.status(200).json(foundedAuthor)
     }catch(error){
-        console.log(error.message);
+        next(error)
     }
 }
 
-const updateAuthor = async (req, res) => {
+const updateAuthor = async (req, res, next) => {
     try{
          const {
             full_name, date_of_birth, date_of_death, period, creativity, bio, photo
@@ -64,25 +65,25 @@ const updateAuthor = async (req, res) => {
         const foundedAuthor = await AuthorSchema.findById(id)
 
         if (!foundedAuthor) {
-            res.status(404).json({message: "Author not found"})
+            throw BaseError.UnAuthorized("Author not found")
         }
 
         const newAuthor = await AuthorSchema.findByIdAndUpdate(id, {full_name, date_of_birth, date_of_death, period, creativity, bio, photo}, {new: true})
 
         res.status(201).json({message: "Author updated"})
     }catch(error){
-        console.log(error.message);
+        next(error)
     }
 }
 
-const deleteAuthor = async (req, res) => {
+const deleteAuthor = async (req, res, next) => {
     try{
         const {id} = req.params
 
         const foundedAuthor = await AuthorSchema.findById(id)
 
         if (!foundedAuthor) {
-            res.status(404).json({message: "Author not found"})
+            throw BaseError.UnAuthorized("Author not found")
         }
 
         await AuthorSchema.findByIdAndDelete(id)

@@ -9,7 +9,7 @@ module.exports = function (err, req, res, next) {
         if(err.name === "ValidationError"){
             const errorDetails = Object.values(err.errors).map((e) => e.message)
             return res.status(400).json({message: err.message, errors: errorDetails })
-        }
+        } 
 
         if(err.name === "Error"){
             const errorDetails = Object.values(err.errors).map((e) => e.message)
@@ -23,6 +23,6 @@ module.exports = function (err, req, res, next) {
 
         return res.json({ message: err.message })
     } catch (error) {
-        res.status(500).json({message: error.message})
+        res.status (500).json({message: error.message})
     }
 }
